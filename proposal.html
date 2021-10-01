@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <style>
+          .btn-primary{
+  
+            background-color: #4d648d;
+            border-color: #4d648d;
+            color: #d0e1f9;
+  
+          }
+          .btn-primary:hover{
+  
+            background-color: #283655;
+            border-color: #283655;
+            color: #d0e1f9;
+  
+          }
+              
+          </style>
+
+    
+      </head>
+    <body style  = "background-color: #1e1f26">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark background-color #1e1f26">
+            <a class="navbar-brand" href="index.html" style="color: #d0e1f9">Dillon Fisher</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="proposal.html">Proposal</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="checkpointone.html">Check Point One</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="checkpointtwo.html">Check Point Two</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="final.html">Final Report</a>
+                </li>
+                
+            </div>
+        </nav>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+    
+                    <h1 class="display-3" style="color: #d0e1f9">Proposal</h1>
+  
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">The Problem</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        Space simulation technology has been a massively growing field in recent years. With the Artemis missions planned for 2024, a need for high fidelity space simulations has developed in the industry. The Artemis missions plan to send humans back to the moon. To simulate that, we need accurate altimetry (height) and image data for the surface of the moon. The moon happens to one of the studies objects in the universe. At any given time, there are hundreds of eyes on the moon. We have sent dozens of probes, captured pictures through telescopes, and even have even have high fidelity height data for the original Apollo landings sites. The United State Geological Survey (USGS) has taken all of this data and composed global mosaics of the altimetry and color data for the Moon. This data covers the entire surface of the moon at a resolution of 118 meters per pixel around the equator. That is a ton of data, and the best part is that it is publicly available and free to use. 
+                        <br><br>
+                        With this data, a user can create a 3d model of the Moon. Over the past few years, my research team and I here at Texas A&M, have done exactly that. We didn’t just create a giant .fbx file that matches the data. That file would be huge. The data set alone is 8 GB. What we did instead was create a c++ class that reads in the data, and dynamically generates a 3d mesh (actually a quad-tree of meshes) that represent the planet altimetry data at multiple resolutions. I wrote a paper on how we specifically did this. That paper can be found 
+                        <a href="/Images/DillonFisherPaper.pdf" download>here</a> 
+                        <br><br>
+                        Once we did that for the Moon, it was fairly straight forward to plug in the Martian altimetry data. Mars has a similarly complete dataset made available by the USGS, as well. But that is where most of our progress halted. We have no other complete altimetry datasets for any other celestial body in the universe. Venus is the next closest though. About 80% of the surface has been measured (although at a much lower resolution). Due to Venus’ thick atmosphere capturing data has been a lot more difficult than the Moon and Mars which relatively don’t have an atmosphere. We also have only been able to capture about 50% of Mercury’s surface due to the planet being tidally locked with the sun (Only one side of the planet faces the sun). And we have about a dozen of incomplete altimetry dataset for the other moons in our solar system. These are mostly incomplete because of lack of interest. With complete datasets for all of these planets and moon, my research team would be able to create a full mockup of our solar system to simulate down to a level of detail never before dreamed of. 
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">The Solution</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        I have two options. I could either lobby NASA to go out and capture data from all of these planets and moon, some of which will require technology not invented yet, or I could make the datasets myself. The latter will probably cost a little less money. 
+                        <br><br>
+                        My overall plan for this project is to create a neural network that takes in an incomplete planetary dataset and outputs a complete dataset. The full pipeline from raw data to rendering will be:
+                        <br><br>
+                        1.	Pass incomplete dataset through neural network to create complete dataset.
+                        <br>
+                        2.	Convert compete dataset into a form readable by our renderer
+                        <br>
+                        3.	Pass the converted dataset to the renderer. 
+                        <br><br>
+                        Through my previous work, I have most of the rendering portion of the project completed. There are however a few things that I have learned in Geometric Modeling already that will improve the design. If I have time at the end of the project, I plan to incorporate those. 
+                        <br><br>
+                        As far as the second step goes, I also have a script that will convert any global dataset into a set of files that are read by the render as well. You can read more about what this specifically is in my paper, but it is simply just a conversion from a cylindrical projected map to cube projected map.
+                        <br><br>
+                        Throughout this project I will primarily be working on the first step from above. I have a bunch of ideas on how to do this, such as using a convolutional neural network or breaking the image down into multiple resolutions and doing the training on each layer. The exact implementation will likely change as the project moves forward but this is my plan.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">The Timeline</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        Thursday, October 28, 12:45 p.m. – First update report:
+                        I plan to have created training data and a baseline framework for the neural network. 
+                        <br><br>
+                        Thursday, November 18, 12:45 p.m. – Second update report:
+                            Update the neural network, trying different heuristics to achieve better results. The neural network is basically preprocessing the data, so it does not have to run in a timely manor.
+                        <br><br>
+                            Wednesday, December 15, 8:00 a.m.– Final report:
+                            I plan to have generated a complete height map (That looks realistic) for Venus and Mercury. During the demo I will pass these into my renderer so that we can see model of the planet in real time. Also, if time permits, I will make improvements to my c++ class that generates the model of the planet, as discussed above. 
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

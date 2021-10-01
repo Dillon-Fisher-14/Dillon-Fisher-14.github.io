@@ -1,7 +1,222 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <style>
+        .btn-primary{
+
+          background-color: #4d648d;
+          border-color: #4d648d;
+          color: #d0e1f9;
+
+        }
+        .btn-primary:hover{
+
+          background-color: #283655;
+          border-color: #283655;
+          color: #d0e1f9;
+
+        }
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+          
+        </style>
+
+    
+      </head>
+    <body style  = "background-color: #1e1f26">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark background-color #1e1f26">
+            <a class="navbar-brand" href="index.html" style="color: #d0e1f9">Dillon Fisher</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="proposal.html">Proposal</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="checkpointone.html">Check Point One</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="checkpointtwo.html">Check Point Two</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="final.html">Final Report</a>
+                </li>
+                
+            </div>
+          </nav>
+
+          <!--<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="..." class="d-block w-100 h-500" alt="...">
+                <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+                  <div class = "px-5"> 
+                    <div class = "px-5"> 
+                      <div class="mx-auto">
+                      
+                        <h1 class = "display-3" style="color: #d0e1f9">About Me</h1>
+                        <hr color=#d0e1f9></hr>
+                        <p class="lead" style="color: #d0e1f9">Learn more about me and my life long aspirations to become a computer scientist.</p>
+                        <a class="btn btn-primary btn-lg" href="about.html" role="button">Jump To About Me</a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100 h-500" alt="..."> 
+                <div class = "jumbotron jumbotron-fluid" style = "Background : #283655 " >
+                    <div class = "px-5"> 
+                      <div class = "px-5"> 
+                        <div class="mx-auto">
+                        
+                          <h1 class = "display-3" style="color: #d0e1f9">Professional Resume</h1>
+                          <hr color=#d0e1f9></hr>
+                          <p class="lead" style="color: #d0e1f9">Looking to hire? Click here to see my job history and skill set. If I make a good match, my contact information is here, too.</p>
+                          <a class="btn btn-primary btn-lg" href="professional.html" role="button">Jump To Professional Resume</a>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100 h-500" alt="...">
+                <div class = "jumbotron jumbotron-fluid" style = "Background : #283655 " >
+                    <div class = "px-5"> 
+                      <div class = "px-5"> 
+                        <div class="mx-auto">
+                        
+                          <h1 class = "display-3" style="color: #d0e1f9">Portfolio</h1>
+                          <hr color=#d0e1f9></hr>
+                          <p class="lead" style="color: #d0e1f9">Take a peek into some of the great projects I have done in the past and some that I am currently working on.</p>
+                          <a class="btn btn-primary btn-lg" href="portfolio.html" role="button">Jump To Portfolio</a>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <img src="..." class="d-block w-100 h-500" alt="...">
+                  <div class = "jumbotron jumbotron-fluid" style = "Background : #283655 " >
+                      <div class = "px-5"> 
+                        <div class = "px-5"> 
+                          <div class="mx-auto">
+                          
+                            <h1 class = "display-3" style="color: #d0e1f9">Service</h1>
+                            <hr color=#d0e1f9></hr>
+                            <p class="lead" style="color: #d0e1f9">Explore some of the ways I have contributed to my community and neighborhood.</p>
+                            <a class="btn btn-primary btn-lg" href="service.html" role="button">Jump To Service</a>
+    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+            
+          </div> 
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5" style="text-align: center">                  
+                
+              <h1 class="display-3" style="color: #d0e1f9">About Me</h1>
+              <br>
+              <img src="homePageAboutMe.jpg" alt="spaceCraftLogo" style="width:420px; height:420px; border-radius: 50%" class="center">
+          
+              <p class="lead" style="color: #d0e1f9">
+                <br>Learn more about me and my plans for the future, here!
+              </p>
+
+              <a class="btn btn-primary btn-lg" href="about.html" role="button">Jump To About Me</a>
+
+            </div>
+          </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5" style="text-align: center">                  
+                
+              <h1 class="display-3" style="color: #d0e1f9">Professional Resume</h1>
+              <br>
+              <img src="SpaceCraftLogo.jpg" alt="spaceCraftLogo" style="width:420px; height:420px; border-radius: 50%" class="center">
+          
+              <p class="lead" style="color: #d0e1f9">
+                <br>Check out my work experience and skills, here!
+              </p>
+
+              <a class="btn btn-primary btn-lg" href="professional.html" role="button">Jump To Professional Resume</a>
+
+            </div>
+          </div>
+          
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5" style="text-align: center">                  
+                
+              <h1 class="display-3" style="color: #d0e1f9">Portfolio</h1>
+              <br>
+              <img src="AsurasCut.jpg" alt="spaceCraftLogo" style="width:420px; height:420px; border-radius: 50%" class="center">
+          
+              <p class="lead" style="color: #d0e1f9">
+                <br>Learn more about some of the projects I am working on, here!
+              </p>
+
+              <a class="btn btn-primary btn-lg" href="portfolio.html" role="button">Jump To Portfolio</a>
+
+            </div>
+          </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5" style="text-align: center">                  
+                
+              <h1 class="display-3" style="color: #d0e1f9">Service</h1>
+              <br>
+              <img src="BentTreeLogo.png" alt="spaceCraftLogo" style="width:420px; height:420px; border-radius: 50%" class="center">
+          
+              <p class="lead" style="color: #d0e1f9">
+                <br>Check out the ways I have servered my community, here!
+              </p>
+
+              <a class="btn btn-primary btn-lg" href="service.html" role="button">Jump To Service</a>
+
+            </div>
+          </div> -->
+          
+          
+    </body>
+
+    
+
 </html>
