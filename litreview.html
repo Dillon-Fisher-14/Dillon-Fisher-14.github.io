@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <style>
+          .btn-primary{
+  
+            background-color: #4d648d;
+            border-color: #4d648d;
+            color: #d0e1f9;
+  
+          }
+          .btn-primary:hover{
+  
+            background-color: #283655;
+            border-color: #283655;
+            color: #d0e1f9;
+  
+          }
+              
+          </style>
+
+    
+      </head>
+    <body style  = "background-color: #1e1f26">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark background-color #1e1f26">
+            <a class="navbar-brand" href="index.html" style="color: #d0e1f9">Gap Filling Terrain Data</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="proposal.html">Proposal</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="litreview.html">Literature Review</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="checkpointone.html">Check Point One</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="checkpointtwo.html">Check Point Two</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="final.html">Final Report</a>
+                </li>
+                
+            </div>
+        </nav>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+    
+                    <h1 class="display-3" style="color: #d0e1f9">Literature Review</h1>
+  
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Introduction</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        The application of this project is the creation of a neural network that will take in an image that represents the height map of a planet, with some large splotches of null data, and fill in the empty areas with realistic terrain. Through my research I have found that this area of interest is specifically called Gap Filling. For the first section of this literature review I will discuss the overall literature within the Neural Network field. For the rest of the literature review, I will discuss previous works within the more specific Gap Filling field as well as the related fields of Object Removal, Generative Neural Networks, and Image Patching. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Background</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        The importance of quick, reliable, and accurate image processing has exponentially increased since the invention of the camera. With the massive amount of image data captured daily, neural networks have been the proven way to process data in hundreds of unrelated fields of study. Ever since the creation of the neural network (NN), there have been many papers studying the results of neural networks on a particular dataset. The datasets range from sonogram images of the human body [1] to satellite imagery from the orbit of the Earth [2] to typical images of everyday objects [3]. Due to the nature of neural networks and how you train them, if you have enough sample data, you can train a neural network to do almost anything. 
+                        <br><br>
+                        One of the most groundbreaking paper on the applications of neural networks is “Handwritten digit recognition with a back-propagation network” [6]. This was the first uses to convolutional neural networks and back propagation for image classification. The neural network trained on images of the handwritten numbers. Once trained the network could be passed a new image of a handwritten number and predict what number was displayed in the image. The use of convolutional layers, deep learning, and back propagation become staples features in most future image processing neural networks. 
+                        <br><br>
+                        A convolutional neural network is a neural network with convolutional layers. Similar to a two-dimensional convolution, “each neuron in the convolution layer receives input from a local receptive field representing features of a limited frequency range” [9]. To put it simply, each neuron in an output layer is the linear combination of the surrounding neurons in an input layer. This convolutional layer allows the larger network to understand global behavior of the image. If the neural network is composed of a single layer, then the output of the neural network is simply the convolution of the image with respect to a trained filter. But convolutional networks rarely (if ever) have a single layer. Most convolutional networks are Deep Neural Networks, which “refers to Artificial Neural Networks (ANN) with multi layers” [8]. Deep neural networks allow the model to fit more complicated patterns of input data and are generally made up of many different types of layers (one of which is a convolutional layer). The power of a deep neural networks is in its ability to discover “intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer” [7]. However, as you add layers to your neural network, training the network becomes more complicated. It becomes more difficult to tweak the parameters in each layer in a way that is beneficial to the performance of the neural network as a whole. This is where Back Propagation comes in. Back Propagation is an algorithm for editing the weights of many layers of the neural network. It is used in basically every paper cited in this literature review.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Limitations of Neural Networks</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        Neural Networks is not a mystical program that will solve all of the world’s problems. When done correctly, a neural network is a program that will only solve a very specific problem, most of the time. And when done incorrectly, it wont even do that. A neural network can be trained to do a single task, but if it is given wildly out of scope data or over trains on a given dataset it will not perform as intended. In a similar vein, a neural network can be “overfit”, and perform worse on validity tests. 
+                        <br><br>
+                        A neural network should be specifically designed to solve the problem in question. Copying a neural network architecture from a similar problem can yield decent results, but a network architecture designed to recognize handwritten digits will not easily recognize cancer cells. “Good generalization can only be obtained by designing a network architecture that contains a certain amount of a priori knowledge about the problem” [6]. General structures are borrowed between applications (for example the use of a convolutional layer), but the overall architecture, the inputs, and the final output will depend on the specific problem at hand. 
+                        <br><br>
+                        Overfitting is a large problem is the field of machine learning. As a neural network is train on training data, the network is described as overfit when its performance on validity data starts to go down while the performance on test data continues to rise. This occurs when a neural network is train too much. [11] has a great explanation of overfitting where a twenty-degree polynomial curve perfectly interpolates 21 points but produces an oscillating substructure which isn’t presenting in macroscopic shape of the data. This made the function very good at give the correct output when the input was one of the given points, but very bad at interpolating/predicting other values on the domain.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Gap Filling</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        The problem of gap filling has only been approached in recent years, but a problem that spans many disciplines. It is largely used when a set of data is incomplete, and the specific values of the missing data does not have to be reconstructed perfectly. To that latter point, this is because in a lot of cases the missing data is unknown and unknowable. For example, a company taking a picture of the moon from the same location every night has to miss a few nights due to cloudy weather. The images of the Moon for the missed nights are lost forever, but that doesn’t mean that a computer won’t have a good guess as to what it might have looked like. Similarly, a satellite capturing images of the Earth will lose sections pixels here and there due to noise or equipment failures. The goal of a gap filling neural network is to take a look at a set of incomplete data and complete it.
+                        <br><br>
+                        One of the first uses of one of these gap filling neural networks was in a case surrounding sonograms of the human body. Based on the nature of the sonogram, small gaps were found in a lot of the data captures for patents, rendering the data mostly useless. A neural network was designed to detect these gaps in data, measure the mean and variance of the data, and then reconstructs the data within the gaps [1]. While on the surface it seems like this neural network is reconstructing a video based on the before and after image of a gap, it is doing something much simpler. It is reconstructing the gap for each pixel of the sonogram independently. Much closer to one-dimensional curve fitting than video reconstruction. But it proved the power of neural networks to create missing data as early as 1995. 
+                        <br><br>
+                        The paper titled Missing Data Reconstruction in Remote Sensing Image With a Unified Spatial–Temporal–Spectral Deep Convolutional Neural Network [2] is a much closer application to this project than the previous paper. It discusses a satellite collecting ground imagery data over swaths of terrain. Many factors poke holes in the data, such as “internal malfunction of satellite sensors and poor atmospheric conditions such as thick cloud”. The paper studies a neural network approach for reconstructing incomplete terrain from the given dataset. They achieve this through a unified spatial-temporal-spectral framework based on a deep convolutional neural network. I genius paper. It should be noted that my project will most likely have a similar architecture to this neural network (while obviously tuned fairly differently).
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Object Removal</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        Object Removal is a very specific case of Gap Filling. In this case you have a complete image, with no missing data, explicitly remove some of the data, and allow a neural network to fill in what you removed. This is akin to a hypothetical photoshop tool. One in which you can magically remove any object from an image and the background fills in behind it. Although it sounds outlandish now, papers on the subject have had terrifyingly accurate results… in some cases. A paper titled High-Resolution Image Inpainting Using Multi-Scale Neural Patch Synthesis [3] was able to remove an arbitrary section of an image and produce a good-looking output image with mixed results. The area of the image in which the section was removed is typically a little blurry in the output image. This isn’t noticeable if most of what was removed is encompassed by the background or things out of focus. But in one fairly hilarious example they remove as section of a cheetah’s face and the generated image is anything but subtle. 
+                        <br><br>
+                        Object removal and gap filling are really bad at adding things to a scene. They work well when the image is fairly homogeneous. For complicated images with awkward areas marked for removal, the filled-in image output by the network is a little unstable. But since my input images would be terrain data, which is fairly homogeneous relative to an image of a cheetah’s face, I have confidence that it would produce a reasonable output image. The trouble I see this type of neural network having for my project is creating the training data. 
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Generative Adversarial Neural Networks</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        Generative Adversarial Neural Networks (GAN) are a way to sidestep the problem entirely. GANs work by training one network to create a unit in some dataset and train another network to determine whether any given unit is in the original dataset or was generated by the GAN [14]. Through this process, the neural network creates entirely new objects to add to a dataset. One use case of a GAN is that it could potentially create artificial training data for other neural networks [16]. While it is not recommended to only use artificial training data, [16] found that when artificial data was used with real data to train a network, the performance of the network increased in their case. This would be incredibly useful for cases with very little true data. One other impressive use of a GAN was to create a non-repeating image texture for ground terrain [15]. This paper proposed a method of generating a series of “grass tiles” that could be stitched together and span a plane with no repeating and limited seem lines between images. 
+                        <br><br>
+                        For my case, a GAN would create entirely new sets of terrain data to use to render a planet. While useful in some cases, I would like to be able to render a planet as accurately as we know it to be, so using a GAN as my final network will not create the results that I desire. But given the limited training data for celestial bodies with incomplete altimetry data, I am considering using it to generate more training data. However this may be way out of scope for the sake of this assignment.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Super-Resolution</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        High resolution image inpainting is the process by which a program takes one or more image “patches” and produces a highly detailed images of the subject. These neural networks mimic multiresolution analysis in wavelet theory to smoothy extrapolate a function far beyond any given datapoints. This higher resolution is called a “Super-Resolution” and has many applications beyond geospatial representation. Although the math has existed for centuries, it fits very nicely into the scope of image enhancement. “The SR image reconstruction is proved to be useful in many practical cases where multiple frames of the same scene can be obtained, including medical imaging, satellite imaging, and video applications.” [13] 
+                        <br><br>
+                        Super Resolution Image Generation Using Wavelet Domain Interpolation With Edge Extraction via a Sparse Representation [12] fixes key issues in the original Super-Resolution by adding an “edge preservation procedure and mutual interpolation between the input LR image and the HF sub-band images, as performed via the discrete wavelet transform (DWT).” This algorithm drastically improves the visuals and accuracy of the Super-Resolution as compared to old algorithms. 
+                        <br><br>
+                        Using a similar dataset to the one that Missing Data Reconstruction in Remote Sensing Image With a Unified Spatial–Temporal–Spectral Deep Convolutional Neural Network [2] used, Super-Resolution for Remote Sensing Images via Local–Global Combined Network [5] was able to create a network that generated terrain image data at a far higher resolution than the input data. This paper discusses the “local-global” algorithm which takes into account the local detail of a pixel and global properties of the image provided into the network. This paper basically implements the core idea of Super-Resolution and improves upon it for the terrain dataset use case. 
+                        <br><br>
+                        After taking a class on wavelet analysis, this was the direction I was thinking of approaching the problem overall. I am glad that there are papers that have already done a lot of the leg work towards getting something like this started. 
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Bibliography</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                        <br>
+                        [1] H. Klebaek, J. A. Jensen and L. K. Hansen, "Neural network for sonogram gap filling," 1995 IEEE Ultrasonics Symposium. Proceedings. An International Symposium, 1995, pp. 1553-1556 vol.2, doi: 10.1109/ULTSYM.1995.495851.
+                        <br><br>
+                        [2] Q. Zhang, Q. Yuan, C. Zeng, X. Li and Y. Wei, "Missing Data Reconstruction in Remote Sensing Image With a Unified Spatial–Temporal–Spectral Deep Convolutional Neural Network," in IEEE Transactions on Geoscience and Remote Sensing, vol. 56, no. 8, pp. 4274-4288, Aug. 2018, doi: 10.1109/TGRS.2018.2810208.
+                        <br><br>
+                        [3] Chao Yang, Xin Lu, Zhe Lin, Eli Shechtman, Oliver Wang, Hao Li, “High-Resolution Image Inpainting Using Multi-Scale Neural Patch Synthesis,” Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017, pp. 6721-6729
+                        <br><br>
+                        [4] N. Komodakis, "Image Completion Using Global Optimization," 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'06), 2006, pp. 442-452, doi: 10.1109/CVPR.2006.141.
+                        <br><br>
+                        [5] S. Lei, Z. Shi and Z. Zou, "Super-Resolution for Remote Sensing Images via Local–Global Combined Network," in IEEE Geoscience and Remote Sensing Letters, vol. 14, no. 8, pp. 1243-1247, Aug. 2017, doi: 10.1109/LGRS.2017.2704122.
+                        <br><br>
+                        [6] LeCun, Y. et al. Handwritten digit recognition with a back-propagation network. In Proc. Advances in Neural Information Processing Systems 396–404 (1990). 
+                        <br><br>
+                        [7] LeCun, Y., Bengio, Y. & Hinton, G. Deep learning. Nature 521, 436–444 (2015). https://doi.org/10.1038/nature14539
+                        <br><br>
+                        [8] S. Albawi, T. A. Mohammed and S. Al-Zawi, "Understanding of a convolutional neural network," 2017 International Conference on Engineering and Technology (ICET), 2017, pp. 1-6, doi: 10.1109/ICEngTechnol.2017.8308186.
+                        <br><br>
+                        [9] O. Abdel-hamid, L. Deng and D. Yu, Exploring Convolutional Neural Network Structures and Optimization Techniques for Speech Recognition, pp. 3366-3370, August 2013.
+                        <br><br>
+                        [10] Livingstone, D., Manallack, D. & Tetko, I. Data modelling with neural networks: Advantages and limitations. J Comput Aided Mol Des 11, 135–142 (1997). 
+                        <br><br>
+                        [11] Lawrence, Steve, C. Lee Giles, and Ah Chung Tsoi. "Lessons in neural network training: Overfitting may be harder than expected." AAAI/IAAI. 1997.
+                        <br><br>
+                        [12] H. Chavez-Roman and V. Ponomaryov, "Super Resolution Image Generation Using Wavelet Domain Interpolation With Edge Extraction via a Sparse Representation," in IEEE Geoscience and Remote Sensing Letters, vol. 11, no. 10, pp. 1777-1781, Oct. 2014, doi: 10.1109/LGRS.2014.2308905.
+                        <br><br>
+                        [13] Sung Cheol Park, Min Kyu Park and Moon Gi Kang, "Super-resolution image reconstruction: a technical overview," in IEEE Signal Processing Magazine, vol. 20, no. 3, pp. 21-36, May 2003, doi: 10.1109/MSP.2003.1203207.
+                        <br><br>
+                        [14] Goodfellow, Ian, et al. "Generative adversarial nets." Advances in neural information processing systems 27 (2014).
+                        <br><br>
+                        [15] S. S. Bhattacharya, Z. Summers, A. Panchal, E. A. -M. Koock, N. McHenry and G. E. Chamitoff, "Using GANs to Generate Random Surface Materials for High Fidelity Low Altitude Imaging Simulations," 2020 IEEE Aerospace Conference, 2020, pp. 1-9, doi: 10.1109/AERO47225.2020.9172565.
+                        <br><br>
+                        [16] M. Frid-Adar, E. Klang, M. Amitai, J. Goldberger and H. Greenspan, "Synthetic data augmentation using GAN for improved liver lesion classification," 2018 IEEE 15th International Symposium on Biomedical Imaging (ISBI 2018), 2018, pp. 289-293, doi: 10.1109/ISBI.2018.8363576.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
