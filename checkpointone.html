@@ -73,5 +73,113 @@
                 </div>
               </div>
 
+              <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+                <div class = "px-5">
+                    <div class = "px-5">
+                        <h1 class = "display-5" style="color: #d0e1f9">Shifting My Project</h1>
+                        <p class="lead" style="color: #d0e1f9">
+                          
+                          <br>
+                          A lot of my literature review is on the topic of neural networks and how they can solve the problem of image gap filling. Through a lot of work and more research, I realized that what I had planned to do was way out of scope for what I am capable of doing this semester, with the limited time I have. I have shifted my planned solution to more of an image processing algorithm for gap filling. There are many reasons why I am no longer using a neural network to solve this problem. But mainly there isn’t enough training data for this subject. I spoke briefly about this in my proposal and abstract, but the raw altimetry data for planets are constrained in a very specific way. I do not have the time to generate a bunch of training data to supplement the few samples supplied by USGS and other national databases. And since the training data would mostly be my made-up planets datasets, how well the model works on real datasets is based on how realistic I can make the training datasets. For that reason and a few others, I decided to instead write a program that analyzes the projected height data and fills in the gaps. 
+                          <br><br>
+                          Fourier Analysis offers a bunch of useful properties that I am interested in. Mainly that the nature/behavior of the image can be analyzed and matched for the gaps that are filled in. We talked about Coon’s patches in class the other day. They are a sort of gap filling algorithm, while cool, have the exact opposite property from what I am looking for (I only bring them up for comparison). Coon’s patches basically interpolate all the edge of an empty region. They can also have edge interpolation, but other than that you have no little say in what all goes on within the region. For a planet, these regions will be many kilometers wide, and it would be ideal if the algorithm for filling in the gap, filled it in with a surface representative of the surrounding region. This is why I am using Fourier Analysis. By looking at the surface through the frequency domain, behavior in the supplied data can be transferred into the regions that are filled in. 
+                          <br><br>
+                          That is the main reason I am shifting more towards Fourier Analysis of the image, but it wasn’t the only one. Fourier analysis of discrete datasets is pretty simple to do an I have experience with it in some of my previous classes. Since a Fourier Series is a summation of sinewaves, the produced function is infinitely continuous (for all derivatives). So as far as creating smooth surfaces goes, this is a pretty good start. 
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">My Results</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      Now to the good news. It worked great! I currently have a gap filling algorithm working in one dimension. The algorithm “simply” (and I’ll get into more detail below), fits a Fourier Series to a row of the image and samples the function where the image is missing data. 
+                      <br><br>
+                      Below I have a row of incomplete Venus data, supplied by USGS. This row is the 20th pixel down of the raw image (you can see the two gaps in top left of the raw image line up with the gap in the extracted row). The algorithm performs Fourier analysis on the row of data and is able to fill in the gaps by sampling the reconstructed Fourier Series. 
+                      <br>
+
+                    </p>
+
+                    <div style="text-align: center">                  
+          
+                      <img src="Images/SampledVenus.png" width="1000" height="500" alt="Raw Image Sampled Venus" class="center" >
+                      <br><br>
+                      <img src="Images/OneDimensionalRawData.png" width="1000" height="500" alt="One Row Raw" class="center">
+                      <br><br>
+                      <img src="Images/OneDimensionalMarkedGen.png" width="1000" height="500" alt="One Row Filled in" class="center">
+                      <br>
+                  
+                    </div>
+
+                    <p class="lead" style="color: #d0e1f9">
+
+                      <br>                        
+                      And as you can see it works pretty well in One-Dimension!
+                      <br><br>
+                      I decided to run this on every row of the image individually to see what the results look like on the full image. And to my surprise they don’t look half bad! Since the algorithm currently only processes a row at a time, there is no guaranteed continuity along a single column. I think that because of the nature of the data, it just happens to look ok. 
+                      <br>                            
+                      
+                    </p>
+
+                    <div style="text-align: center">                  
+          
+                      <img src="Images/SampledOneDimByRowOutput_50.png" width="1000" height="500" alt="Full image by Row Filled in" class="center">
+                  
+                    </div>
+
+                    <p class="lead" style="color: #d0e1f9">
+                      <br>
+                      The goal was never to run the 1-dimensional algorithm by row on the full dataset. After I got it working, I thought “why not” since it would be a good visualization of my progress. The bottom rows of the image are all null so it produced a weird artifact. A 2-dimensional Fourier Series should fix that.
+                    </p>
+
+                </div>
+            </div>
+            </div>
+
+
+            <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+              <div class = "px-5">
+                  <div class = "px-5">
+                      <h1 class = "display-5" style="color: #d0e1f9">How It Works</h1>
+                      <p class="lead" style="color: #d0e1f9">
+                        
+                        I will use the term Fourier Analysis when talking about this algorithm, but it is not technically what is going on. I am not projecting the image into the frequency domain. Projecting the raw data into the frequency domain will not get rid of the gaps. It will just represent the gaps in the frequency domain. I am generating pseudo-Fourier series coefficient by fitting a sinewave with a specific frequency (varying the amplitude and a phase shift) to the data. I am using Gradient Descent to fit the wave to the data. Once the best fit sinewave has been found, I save its amplitude and shift to a list, subtract the sine wave from the dataset, and fit another wave with the next frequency. After doing this for a set number of frequencies, the dataset points will slowly work their way to zero as the sum of these sinewaves converge to the original dataset (ignoring the gaps). Once the raw data is fully analyzed, I can sample the summation of the sinewaves at all the locations where the data is null to fill it in with the interpolated data. Through this I can fill in the gaps for any arbitrary monotonically sampled function.
+
+                      </p>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Moving Forward</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      Since I basically changed the entire solution plan for my project, my schedule in the proposal is also out the window. The plan moving forward is to convert this into a 2-dimensional Fourier Analysis so that every pixel filled in is influenced by all the other pixels in the image instead of just the other pixels in its row. Once I have that working, I will use the generated image in my terrain generation code mentioned in the proposal. Here is the following updated timeline:
+
+                      <br><br>
+                      Thursday, October 28, 12:45 p.m. – First update report COMPLETED:
+                      Have a working 1-dimensional Fourier-Analysis Gap-Filling Algorithm. 
+                      <br><br>
+                      Thursday, November 18, 12:45 p.m. – Second update report:
+                      Have a working 2-dimensional Fourier-Analysis Gap-Filling Algorithm. Apply this algorithm to the incomplete Venus dataset. 
+                      <br><br>
+                      Wednesday, December 15, 8:00 a.m.– Final report:
+                      Integrate the Venus dataset into my planet renderer so that we can see model of the planet.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+            
+
     </body>
 </html>
