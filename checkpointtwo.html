@@ -73,5 +73,167 @@
                 </div>
               </div>
 
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Update Overview</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      This has been a very successful checkpoint. I was able to convert my gap filling algorithm from the last check point to two dimensions and run it on a sampled image of the full dataset. I was also able to create some robustness tests for my model which I will get into more detail about below. I am very happy with the results of this checkpoint, and I think they put me in a very good position to finish this project by the deadline.
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+          <div class = "px-5">
+              <div class = "px-5">
+                  <h1 class = "display-5" style="color: #d0e1f9">Two-Dimensional Model</h1>
+                  <p class="lead" style="color: #d0e1f9">
+                    
+                    <br>
+                    Since the last checkpoint, I have updated my gap filling algorithm to work with two-dimensional input. The benefit to this is that now every filled in pixel is influenced by every other pixel in the image. This will allow the resulting image to have more vertical continuity compared to the final image I showed in the previous checkpoint. 
+                    <br><br>
+                    This version of the algorithm work in mostly the same way as the one-dimensional variant. Instead of only having one frequency parameter that I am varying by, I have two. And instead of fitting a sinewave the data I am fitting a product of sinewaves, of the form: y = a * sin(fx * px + cx) * sin(fy * py + cy). The variables fx and fy are the current frequencies being evaluated, px and py are the current pixel indices, and a, cx, and cy are the trainable parameters that the gradient descent is trying to calculate. 
+                    <br><br>
+                    Here are the results of the two-dimensional algorithm! 
+                    
+                    <raw image>
+                    <filled in image>
+                  </p>
+
+                  <div style="text-align: center">                  
+          
+                    <img src="Images/checkpoint2/SampledVenus_93_187.png" width="1000" height="500" alt="Raw Image Sampled Venus" class="center" >
+                    <br><br>
+                    <img src="Images/checkpoint2/TwoDimensionalAnalysisWithReplace_93_187_80.png" width="1000" height="500" alt="One Row Raw" class="center">
+                    <br>
+                
+                  </div>
+
+                  <p class="lead" style="color: #d0e1f9">
+
+                    <br><br>
+                      The results are fantastic! The images above are 93x187 pixels. I am very happy with this an eager to test it on a larger data sample. algorithm works pretty slowly right now. I am going to add some heuristics to speed up to computation before I try to run it on the full dataset. 
+
+
+                  </p>
+              </div>
+          </div>
+      </div>
+            
+
+      <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+        <div class = "px-5">
+            <div class = "px-5">
+                <h1 class = "display-5" style="color: #d0e1f9">Robustness Tests</h1>
+                <p class="lead" style="color: #d0e1f9">
+                  
+                  <br>
+                  One of my design constraints is that the algorithm should work for arbitrarily filled in data. So, if enough data is present, it should be able to fill something realistic in. I devised two tests to see how my algorithm performs on differently filled in data. The first test gave each sample data point a percent chance of being removed from the initial data. The algorithm would run on the remaining points, as usual. The second test removed a percentage of the dataset from the middle of the data. This produced an increasing gap in the middle of the data, leaving only the two ends for high percentages. 
+                  <br><br>
+                  Below are the results of the two tests. I ran these tests using the previous one-dimensional gap filling algorithm since the results will be clearer. I picked a new row of the same image from the previous checkpoint (row 370 if you are curious). This row was chosen because it only had 10 datapoints which were missing. The blue points below are the truth data, and the red point are what the algorithm filled in. 
+                  <br><br>
+                  
+
+                </p>
+
+
+                <div style="text-align: center">    
+
+                  <h2 class = "display-5" style="color: #d0e1f9">Uniformly Distributed Dropout</h2>
+                  <br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_00.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 0%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_10.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 10%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_20.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 20%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_33.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 33%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_50.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 50%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_75.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 75%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithDropout_90.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 90%</p>
+                  <br><br>
+                  <br>
+              
+                </div>
+
+                <div style="text-align: center">    
+
+                  <h2 class = "display-5" style="color: #d0e1f9">Center Gap Dropout</h2>
+                  <br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_00.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 0%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_10.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 10%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_20.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 20%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_33.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 33%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_50.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 50%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_75.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 75%</p>
+                  <br><br>
+                  <img src="Images/checkpoint2/row370Dropout/OneDimensionalTestWithMiddleDropout_90.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                  <p class="center" style="color: #d0e1f9">Dropout Rate of 90%</p>
+                  <br><br>
+                  <br>
+              
+                </div>
+
+                <p class="lead" style="color: #d0e1f9">
+
+                  <br>                        
+                  My algorithm performed pretty well on the Uniformly Distributed Dropout, but the Center Gap Dropout has revealed a few flaws in how the algorithm behaves given certain inputs. Ideally, the algorithm should be able to take any input data and fill in the missing data. I plan to revise the algorithm and improve it to hopefully work better in the second test case by the end of the semester. 
+                  <br>                          
+                  
+                </p>
+
+            </div>
+        </div>
+      </div>
+
+      <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+        <div class = "px-5">
+            <div class = "px-5">
+                <h1 class = "display-5" style="color: #d0e1f9">Moving Forward</h1>
+                <p class="lead" style="color: #d0e1f9">
+                  
+                  Moving forward, I plan to make tweaks to the gap filling algorithm to make it more robust. The results from the extremely sparse data were worse than I had expected. Altimetry dataset with as little as 10% data is very rare (unless it is a landing site), but I would like this algorithm to one day be able to take a reasonably small dataset, like a landing site, and extrapolate a surface for an entire planet. Maybe it is a pipe dream, but I think it would be cool.
+                  <br><br>
+                  However, the algorithm works fine for the raw Venus dataset (which for reference has about 83% data). I am on track to complete the project by the end of the semester. After I make a few tweaks to the algorithm (hopefully for the better), I will run it on a larger image. The larger image will then be used to render the geometry of the planet. 
+                  <br><br>
+                  The timeline has largely not changed since I submitted the previous checkpoint. I added a few updates to it, which align with what I have said in this report. 
+                  <br><br>
+                  Thursday, October 28, 12:45 p.m. – First update report COMPLETED: Have a working 1-dimensional Fourier-Analysis Gap-Filling Algorithm.
+                  <br><br>
+                  Thursday, November 18, 12:45 p.m. – Second update report COMPLETED: Have a working 2-dimensional Fourier-Analysis Gap-Filling Algorithm. Apply this algorithm to the incomplete Venus dataset. Create Robustness tests for the algorithm and see how it fairs with specific input data. 
+                  <br><br>
+                  Wednesday, December 15, 8:00 a.m.– Final report: Integrate the generated Venus dataset into my planet renderer so that we can see the 3D model of the planet. Tweak model to perform better given sparse input data (if time permits).
+
+                </p>
+            </div>
+        </div>
+    </div>
+
     </body>
 </html>
