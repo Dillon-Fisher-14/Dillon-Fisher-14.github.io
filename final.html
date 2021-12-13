@@ -26,6 +26,18 @@
             color: #d0e1f9;
   
           }
+          .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+          }
+
+          /* Clearfix (clear floats) */
+          .row::after {
+            content: "";
+            clear: both;
+            display: table;
+          }
               
           </style>
 
@@ -72,6 +84,410 @@
                   </div>
                 </div>
               </div>
+
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Problem Overview</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      In order to create a mesh that represents the surface of a planet (or any stretch of terrain), you need a Digital Elevation Model. A Digital Elevation Model (DEM) is a fancy word for the height map. With this height map you can write an algorithm to generate the vertices of a mesh at specific points along the surface. While DEMs for all planets and moons in our solar system are publicly available from the United State Geological Survey (USGS), not all of the DEMs have complete datasets. In fact, most of them are incomplete. USGS has only complied a complete DEM for Mars, the Moon, and Earth. All other planets and Moons have incomplete data. 
+                      <br><br>
+                      The goal for this project is to take a Digital Elevation Model with incomplete data and fill it in the gaps with data that is representative of the rest of the surface. 
+                      <br><br>
+                      My solution to this problem was to fit a series of sinusoidal surfaces to the image. Each surface would be a predefined pair of frequencies (one frequency for each direction), varying the amplitude and phase in each direction. The algorithm worked by fitting a sinusoidal surface to the input image, subtracting that surface from the image, and fitting a new sinusoidal surface (with a different frequency) to the new image. The algorithm does this for a specific set of frequencies (the frequencies I picked attempt to replicate a Fourier series). Once all the sine waves have been fit, I sum them all back together and the resulting surface is my output image. 
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Previous Work</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      The gap filling problem has been a long running issue in image processing. Due to sensor errors or any number of complications, raw data gather from any devise is not always be complete. Whether it is a satellite tracking weather patterns or an MRI, holes and gaps can appear in any dataset. For that reason, the gap filling problem spans many disciplines. One of the earliest solutions to this attempted to fill in gaps of sonograph data [1]. Back in 1995, they used a neural network to measure the mean and variance of the input signal of a sonograph and fill in the missing pieces. The model tracked each pixel separately, so that whenever that pixel stopped receiving data the neural network would output some value based on the stored mean and variance. This was a relatively simple example to a paper called High-Resolution Image Inpainting using Multi-Scale Neural Patch Synthesis [2]. This paper described a deep neural network model that takes an input image (with no missing data) and any arbitrary mask, outputting an image with the contents under the mask removed and filled in by the neural network. The model worked with varying degrees of success. 
+                      <br><br>
+                      While it is uncommon now, many papers on gap filling in the past used traditional image processing methods instead of machine learning. One paper published result of their program filling in gaps of weather data using Singular Spectrum Analysis [3]. There are a ton of papers that use Fourier Analysis and similarly well-developed methods to analyze image and fill in the gaps. 
+                      <br><br>
+                      [1] H. Klebaek, J. A. Jensen and L. K. Hansen, "Neural network for sonogram gap filling," 1995 IEEE Ultrasonics Symposium. Proceedings. An International Symposium, 1995, pp. 1553-1556 vol.2, doi: 10.1109/ULTSYM.1995.495851.
+                      <br>
+                      [2] Chao Yang, Xin Lu, Zhe Lin, Eli Shechtman, Oliver Wang, Hao Li, “High-Resolution Image Inpainting Using Multi-Scale Neural Patch Synthesis,” Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017, pp. 6721-6729
+                      <br>
+                      [3] Ghafarian Malamiri, Hamid Reza, et al. "Gap-filling of MODIS time series land surface temperature (LST) products using singular spectrum analysis (SSA)." Atmosphere 9.9 (2018): 334.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Libraries Used</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      I used the programming language python for this project. I used VS Code as my IDE. I wrote the entire code for this project from scratch and only used a few libraries. Below, I list the libraries along with their purpose as part of the project. The libraries fall into two groups: libraries that were vital to the functionality of the program (Numpy, SciPy, Pillow) and libraries that I used to test and debug (Matplotlib, Time, TQDM). 
+                      <br><br>
+                      I used Numpy for basic python stuff like n-dimensional arrays. 
+                      <br>
+                      I used SciPy’s optimizer to fit my sine function to the input data. 
+                      <br>
+                      I used Pillow for image reading and writing.
+                      <br>
+                      I used Matplotlib to create all the plots in the reports
+                      <br>
+                      I used Time to track how long the program would take and find bottlenecks
+                      <br>
+                      I used tqdm as a fancy progress bar in for loops. It prints to the console which iterations of the for loop you are on and a bunch of other helpful information.
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Description of Work Done</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      In general, the work went pretty smoothly, with only a few hiccups here and there. To summarize, I completed an algorithm that successfully gap filled 1-dimensional data by the first checkpoint. By the second checkpoint I created dropout tests for my 1-dimensional algorithm and updated it to work in 2-dimensions. Or at least I thought I had a working 2-dimensional version working. 
+                      <br><br>
+                      I ran the algorithm on a larger image and the results were not as good as I had hoped. A lot of artifacts here and there that we implicative of bugs in the program. I don’t remember all the changes between checkpoint 2 and the final demo, but it was a lot. I probably spent twice as much time working on this project after checkpoint two as compared to before. A lot of the progress I made after check point two was optimizing the program, fixing all of the bugs in my initial version, adding heuristics and running tests. I will speak a little bit towards each of those.  
+                      <br><br>
+                      I used the programming language python for this project. The reason for this was to easily produce diagrams and videos for the report. About halfway through I had wished that I had written it in a more optimized language (like C++) and almost rewrote the whole project. I decided on some middle ground and rewrote the project to cython (compiled python). Two of my lab-mates helped me convert the code to cython and add a few python specific optimizations that I am very grateful for. Just to be clear. My lab-mates only helped me optimize my code and integrate it with cython. They did not write any code at all. Just there for optimization guidance and cython best practices. They are however, very interested in this project as we will be continuing it together next semester. But regardless, I was able update the code with a huge 5-8 times performance increase.
+                      <br><br>
+                      Once the program was optimized, I started running tests on larger images and this is when I realized that the algorithm did not work as well as I thought it did. The Fourier series approximation that I was generating was not approximating the input data. For example, if I gave it something with no gaps in it, what it returned was not very close to what I input. The general shape was the same, but a lot of the details were lost. Also, the program only worked on a square image. These were all relatively small bumps in the road of this project, but there were quite a few small bugs here and there to handle.
+                      <br><br>
+                      After being fairly certain that the program was at least working I started looking towards heuristics to make it better. There were a bunch of small heuristics I added which altered how well the algorithm performed. Things like how I initialized the amplitude and phase of the first sine wave in gradient descent. The most important heuristic I added was changing the order of the frequencies of each sine wave that I fit. This was a lot more impactful for the two-dimensional case where I have two frequencies to keep track of. I decided against having two nested for loops that loop through each direction’s frequency respectively. To make this clear, if I have three frequencies that I was to run in each direction I would loop through the frequencies in this order [(1,1), (1,2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3,3)]. I found that the Fourier approximation fits better if I do all of the lower frequencies first. I don’t know how to fully articulate what this ordering would be for these frequency pairs, but here is what the order looks like for our three frequency example: [(1, 1), (1, 2), (2, 1), (1,3), (2, 2), (3, 1), (2,3), (3, 2), (3, 3)]
+                      <br><br>
+                      The remainder of the development of this project was bring back all my changes to the 1-dimensional case, running tests, and generating pretty images and graphics for this report/presentation. 
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+          <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+            <div class = "px-5">
+                <div class = "px-5">
+                    <h1 class = "display-5" style="color: #d0e1f9">Project Results</h1>
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      My project achieved exactly what I set out to achieve. Given an input DEM with gap and/or missing data, my program returns a filled in DEM. Although on the surface these look a lot like the results from checkpoint two, I can assure you they are not. The program from checkpoint two has been revamped and is 1000x better. It runs faster and has a bunch of small improvements that I didn’t have time to discuss above. 
+                      <br><br>
+
+                    </p>
+
+                    <div style="text-align: center">                  
+
+                      <img src="Images/final/VenusRawFinal.png" width="1000" height="500" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Input Digital Elevation Model</p>
+                      <br><br>
+                      <img src="Images/final/VenusRawFinalSignal.png" width="1000" height="500" alt="One Row Raw" class="center">
+                      <p class="center" style="color: #d0e1f9">Output Digital Elevation Model</p>
+                      <br>
+                  
+                    </div>
+
+                    <br>
+
+                    <div style="text-align: center">                  
+
+                      <img src="Images/final/2Dimensional/TwoDimensionalZoomedInRaw.png" width="500" height="500" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Zoom in of Input Digital Elevation Model</p>
+                      <br><br>
+                      <img src="Images/final/2Dimensional/TwoDimensionalZoomedInFilledIn.png" width="500" height="500" alt="One Row Raw" class="center">
+                      <p class="center" style="color: #d0e1f9">Zoom in of Output Digital Elevation Model</p>
+                      <br>
+                  
+                    </div>
+    
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      For comparison’s sake, I re-ran my 1-dimensional tests on the new version of the Fourier approximation algorithm. Here are the results of my gap filling algorithm in one dimension:
+                      <br><br>
+
+                    </p>
+
+                    <div style="text-align: center">                  
+
+                      <img src="Images/final/1Dimensional/OneDimensionalDataWithReplace.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">One Dimensional Gap Filling</p>
+                      <br><br>
+                  
+                    </div>
+
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      One of my hyperparameters for this program is the tolerance value for the sinusoid fitting. The tolerance defined how close the sine wave had to be to the data before the gradient descent would stop. To my surprise a lower tolerance (closer to zero) didn’t produce the best results. The above image and all of the images and tests use a tolerance of 0.01. Here is what it looked like when I set the tolerance to 0.000001. It looks like the data is being overfit.
+                    
+                      <br><br>
+
+                    </p>
+
+                    <div style="text-align: center">                  
+
+                      <img src="Images/final/1Dimensional/ZeroTol/OneDimensionalWithReplace.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">One Dimensional Gap Filling with very low Tolerance</p>
+                      <br><br>
+                  
+                    </div>
+
+                    <p class="lead" style="color: #d0e1f9">
+                      
+                      <br>
+                      I also decided to run all my dropout tests again and was very happy with these results. My dropout tests in checkpoint two had extremely obvious sinusoidal patterns in the gap dropout. Due to all the updates I made to the algorithm, the output is a lot more representative of the input data and doesn’t produce glaring sinusoids anymore (except a little bit when most of the data is removed). 
+                      <br><br>
+
+                    </p>
+    
+                    <div style="text-align: center">    
+    
+                      <h2 class = "display-5" style="color: #d0e1f9">Uniformly Distributed One-Dimensional Dropout</h2>
+                      <br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_00.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 0%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_10.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 10%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_20.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 20%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_30.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 30%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_40.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 40%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_50.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 50%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_75.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 75%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_90.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 90%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/RandomDropout/OneDimensionalWithReplaceWithDropout_95.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 95%</p>
+                      <br><br>
+                      <br>
+                  
+                    </div>
+    
+                    <div style="text-align: center">    
+    
+                      <h2 class = "display-5" style="color: #d0e1f9">Center Gap One-Dimensional Dropout</h2>
+                      <br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_00.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 0%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_10.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 10%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_20.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 20%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_30.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 30%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_40.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 40%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_50.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 50%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_75.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 75%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_90.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 90%</p>
+                      <br><br>
+                      <img src="Images/final/1Dimensional/GapDropout/OneDimensionalWithReplaceWithMiddleDropout_95.png" width="800" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Dropout Rate of 95%</p>
+                      <br><br>
+                      <br>
+                  
+                    </div>
+    
+                    <p class="lead" style="color: #d0e1f9">
+    
+                      <br>                        
+                      I then decided to create a two-dimensional dropout test. I was extremely surprised how well these worked for terrain data. I only tested random pixel dropout in two-dimensions (and not the gap dropout), but even with most of the pixels missing the overall shape still holds pretty well. For these tests I took a small square section of the Venus DEM with very few missing pixels. 
+                      <br><br>                        
+                      
+                    </p>
+
+                    <div style="text-align: center">    
+    
+                      <h2 class = "display-5" style="color: #d0e1f9">Uniformly Distributed Two-Dimensional Dropout</h2>
+                      <br>
+                      
+                      <img src="Images/final/2Dimensional/VenusApprox/TwoDimensionalAnalysisOnlySignal_ORIGINAL_100_100_50.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                      <p class="center" style="color: #d0e1f9">Original Image</p>
+                      <br><br>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_10.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 10%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_10.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 10%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_20.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 20%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_20.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 20%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_30.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 30%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_30.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 30%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_40.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 40%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_40.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 40%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_50.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 50%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_50.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 50%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_70.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 70%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_70.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 70%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                      <div class="row" >
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisORIGINAL_100_100_60_tol_01_dropout_90.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Input Image with Dropout Rate of 90%</p>
+                        </div>
+                        <div class="column">
+                          <img src="Images/final/2Dimensional/VenusRandomDropout/TwoDimensionalAnalysisOnlySignal_100_100_60_tol_01_dropout_90.png" width="400" height="400" alt="Raw Image Sampled Venus" class="center" >
+                          <p class="center" style="color: #d0e1f9">Output Image with Dropout Rate of 90%</p>
+                        </div>
+                        <br><br>
+                      </div>
+                    </div>
+
+                    <!--<p class="lead" style="color: #d0e1f9">
+    
+                      <br>                        
+                      By this point my curiosity got the better of me and I decided to run this test on a non-terrain image. The algorithm does not work on photos as well as it worked on terrain. The sharp edges of any item in a photograph cause the high frequency sine waves to have large amplitudes (in order to fit that data). This causes a lot of variation in the few pixels that are removed. However, with most of the pixels removed, it holds the original shape of the image as well as terrain data was held. I bet there are some things I can do to better handle high pixel variations in a region. In fact, I’ll talk a little about that in the future works section. <br><br>                        
+                      
+                    </p>-->
+
+                </div>
+                
+            </div>
+            
+
+          </div>
+
+            <div class = "jumbotron jumbotron-fluid" style = "Background : #283655" >
+              <div class = "px-5">
+                  <div class = "px-5">
+                      <h1 class = "display-5" style="color: #d0e1f9">Description of Work Done</h1>
+                      <br>
+                      <h3 class = "display-5" style="color: #d0e1f9">Did I accomplish anything that has never been done before?</h3>
+                      <p class="lead" style="color: #d0e1f9">
+                        
+                        <br>
+                        My project does not do anything new. People have been using signal analysis in image processing for decades, and recently machine learning has had great results in the gap fill problem. There are a ton of papers on similar models that perform extremely well. Having said that, I would be surprised if there is a paper out there that does exactly what my algorithm does (I could not find it if it exists).  
+                        <br><br>
+                        While writing this report I found a paper called “Gap-filling for the high-resolution PET sinograms with a dedicated DCT-domain filter” which was theoretically close to what I did. 
+                        <br><br>
+  
+                      </p>
+
+                      <h3 class = "display-5" style="color: #d0e1f9">How well did I meet the goals of my project?</h3>
+                      <p class="lead" style="color: #d0e1f9">
+                        
+                        <br>
+                        I am very happy with the results of my project. I have had the broad idea to use Fourier analysis in order to fill in terrain data for a few years now. It was really fulfilling to give it a go and see what happens. 
+                        <br><br>
+                        I met the main goal of my project, which was to take an input DEM with gaps and to output a DEM without gaps. However, I did not have time to use the produced DEM and see what it looks like projected to a sphere. While it was my plan to originally do that, when it came down to a time crunch at the end of the semester, I opted to run two-dimensional dropout tests instead since I felt they would give a better representation of my work. 
+                        <br><br>
+  
+                      </p>
+
+                      <h3 class = "display-5" style="color: #d0e1f9">What are the next steps for this project?</h3>
+                      <p class="lead" style="color: #d0e1f9">
+                        
+                        <br>
+                        This is something I am super excited about. I have talked with a few of my friends (lab-mates) and we plan to work together and take this project to the next level next semester. 
+                        <br><br>
+                        The base algorithm can be applied to data in n-dimensional space. I really want to run some simple tests on 3-dimensional volumes to see if I can get similarly gap filling results. Since this algorithm doesn’t have the primary limitations of a typical Fourier series (the data points don’t all have to be equally spaced) I am excited to see how well it works in the future. 
+                        <br><br>
+                        Along with that, I have been looking into Entropy Maps. They are basically a filter on an image that shows areas of volatility in an image. For a planet that corresponds separating out areas that are relatively flat/smooth from areas with a lot of geologic activity. In using this I think I can tune how much I fit specific data. For example, the smoother data will have a tighter fit (smaller fit tolerance) than the more chaotic data.
+                        <br><br>
+  
+                      </p>
+
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
 
     </body>
 </html>
